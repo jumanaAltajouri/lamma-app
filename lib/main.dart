@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lammaapp/app_theme.dart';
+import 'package:lammaapp/auth/create_new_password_screen.dart';
+import 'package:lammaapp/auth/forget_password_screen.dart';
+import 'package:lammaapp/auth/login_screen.dart';
+import 'package:lammaapp/auth/register_screen.dart';
+import 'package:lammaapp/auth/verification_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lammaapp/home_screen.dart';
 import 'onboarding_screen.dart';
@@ -22,10 +27,19 @@ class LammaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       routes: {
-        '/home': (context) =>  HomeScreen(),
-        '/onboarding': (context) =>  OnboardingScreen(),
+        ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
+        VerificationScreen.routeName: (_) => VerificationScreen(email: ''),
+        CreateNewPasswordScreen.routeName: (_) => CreateNewPasswordScreen(),
+        loginScreen.routeName:(_) => loginScreen(),
+        RegisterScreen.routeName:(_) => RegisterScreen(),
+         HomeScreen.routeName:(_) => HomeScreen(),
+         OnboardingScreen.routeName:(_) => OnboardingScreen(),
+         
+        // '/home': (context) =>  HomeScreen(),
+        // '/onboarding': (context) =>  OnboardingScreen(),
       },
-      initialRoute: seenOnboarding ? '/home' : '/onboarding',
+      initialRoute: loginScreen.routeName,
+      // seenOnboarding ? '/home' : '/onboarding',
     );
   }
 }
